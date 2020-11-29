@@ -89,7 +89,7 @@ lazy_static = "1.4"
 log = "0.4"
 mime = "0.3.7"
 percent-encoding = "2.1"
-tokio = { version = "0.3.3", default-features = false, features = ["net", "time"] }
+tokio = { version = "0.3.4", default-features = false, features = ["net", "time"] }
 pin-project-lite = "0.2.0"
 ipnet = "2.3"
 
