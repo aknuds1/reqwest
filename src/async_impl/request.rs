@@ -11,9 +11,12 @@ use serde_json;
 
 use super::body::Body;
 use super::client::{Client, Pending};
+#[cfg(feature = "multipart")]
 use super::multipart;
 use super::response::Response;
-use crate::header::{HeaderMap, HeaderName, HeaderValue, CONTENT_LENGTH, CONTENT_TYPE};
+use crate::header::{HeaderMap, HeaderName, HeaderValue, CONTENT_TYPE};
+#[cfg(feature = "multipart")]
+use crate::header::CONTENT_LENGTH;
 use crate::{Method, Url};
 use http::{Request as HttpRequest, request::Parts};
 
@@ -27,6 +30,8 @@ pub struct Request {
 }
 
 /// A builder to construct the properties of a `Request`.
+///
+/// To construct a `RequestBuilder`, refer to the `Client` documentation.
 #[must_use = "RequestBuilder does nothing until you 'send' it"]
 pub struct RequestBuilder {
     client: Client,
@@ -258,6 +263,7 @@ impl RequestBuilder {
     /// # Ok(())
     /// # }
     /// ```
+    #[cfg(feature = "multipart")]
     pub fn multipart(self, mut multipart: multipart::Form) -> RequestBuilder {
         let mut builder = self.header(
             CONTENT_TYPE,

@@ -1,3 +1,19 @@
+# v0.11.0
+
+- Change `multipart` to be an optional cargo feature.
+- Remove deprecated methods.
+
+- Update to Tokio v1.0.
+- Update to Bytes v1.0.
+- Update to hyper v0.14.
+
+## v0.10.10
+
+- Add `tcp_keepalive` option to `blocking::ClientBuilder`.
+- Add `multipart::Part::stream_with_length` constructor, to create a streaming part with a known length.
+- Add `ClientBuilder::https_only` option, to allow requiring URLs to be `https`.
+- Change default `tcp_keepalive` value to be disabled.
+
 ## v0.10.9
 
 - Add `rustls-tls-native-roots`, `rustls-tls-webpki-roots`, and `rustls-tls-manual-roots` Cargo features, to configure which certificate roots to use with rustls.
